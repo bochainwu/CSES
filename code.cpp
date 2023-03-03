@@ -1,31 +1,34 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int main(void){
     cout.sync_with_stdio(false);
-    long long int a;
-    cin>>a;
-    for(int i=0;i<a;i++){
-        long long int x, y;
-        cin>>x>>y;
-        int mx = max(x, y);
-        if((x==1) && (y % 2 != 0)){
-            cout<<y*y<<endl;
-        }else if ((x % 2 ==0) && (y == 1)){
-            cout<<x*x<<endl;
-        }else if (mx%2 == 0) {
-            if(x>y) {
-                cout<<x*x - y + 1<<endl;
-            }else {
-                cout<<y*y - (2*y) + x + 1<<endl;
-            }
-        }else if (mx%2 != 0) {
-            if(x>y) {
-                cout<<(x-1)*(x-1) + y<<endl;
-            }else {
-                cout<<y*y - x + 1<<endl;
-            }
-        }
+    long long int n, m, k, i, j, ans;
+    cin>>m>>n>>k;
+    long long int a[n], b[m];
+    for(i=0; i<n;i++){
+        cin>>a[i];
     }
+    for(i=0; i<m;i++){
+        cin>>b[i];
+    }
+    sort(a, a+n);
+    sort(b, b+m);
+
+    while (i < n && j < m){
+		if (abs(a[i] - b[j]) <= k){
+			++i; ++j;
+			++ans;
+		}
+		else{
+			if (a[i] - b[j] > k){
+				++j;
+			}else{
+				++i;
+			}
+		}
+	}
+	cout << ans << "\n";
     return 0;
 }
