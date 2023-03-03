@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 const int s = 2e5;
-
+ 
 int main(void){
     cout.sync_with_stdio(false);
     int n, m, k, i=0, j=0, ans=0;
@@ -16,7 +16,7 @@ int main(void){
     }
     sort(a, a+n);
     sort(b, b+m);
-
+ 
     cout<<endl;
     i=0;j=0;
     while (i < n && j < m){
